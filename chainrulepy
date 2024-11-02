@@ -1,0 +1,18 @@
+from sympy import symbols, diff,  sympify
+
+x = symbols('x')
+g = symbols('g')  
+
+g_input = input("Enter the inner function g(x): ")
+f_input = input("Enter the outer function f(g): ")  # Changed prompt
+
+g_expr = sympify(g_input)  # inner function g(x)
+f_expr = sympify(f_input)  # outer function f(g)
+
+g_prime = diff(g_expr, x)  # derivative of g with respect to x
+f_prime = diff(f_expr, g)  # derivative of f with respect to g
+
+# Apply the chain rule: f'(g) * g'(x)
+chain_rule_result = f_prime * g_prime
+
+print(chain_rule_result)
